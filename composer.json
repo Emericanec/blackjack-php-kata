@@ -1,0 +1,18 @@
+{
+    "name": "agilix/blackjack-php-kata",
+    "description": "exercise for behave usage",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": ">7",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "require-dev": {
+        "behat/behat": "^3.6",
+        "phpunit/phpunit": "^9",
+        "emuse/behat-html-formatter": "^0.2.0"
+    }
+}
