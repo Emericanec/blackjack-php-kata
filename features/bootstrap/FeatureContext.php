@@ -60,9 +60,9 @@ class FeatureContext implements Context
     /**
      * @When /^дилер начинает набирать себе (.*)/
      */
-    public function дилерНачинаетНабиратьСебе($карты)
+    public function дилерНачинаетНабиратьСебе(string $карты)
     {
-        $this->game->getDealer()->initCards($карты);
+        $this->game->getDealer()->initCards(explode(',', $карты));
     }
 
     /**
