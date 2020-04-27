@@ -1,10 +1,9 @@
 <?php
 
-
 class Blackjack
 {
-    private $bets = array();
-    private $deck;
+    private array $bets = [];
+    private Deck $deck;
 
     public function __construct()
     {
@@ -12,16 +11,16 @@ class Blackjack
         $this->deck->shuffle();
     }
 
-    public function addBet(Player $player, $amount)
+    public function addBet(Player $player, $amount): void
     {
-        array_push($this->bets, array($player, $amount));
+        $this->bets[] = [$player, $amount];
     }
 
-    public function dealerDealsCards()
+    public function dealerDealsCards(): array
     {
         $first = $this->deck->takeOne();
         $second = $this->deck->takeOne();
 
-        return array($first, $second);
+        return [$first, $second];
     }
 }

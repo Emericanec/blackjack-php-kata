@@ -1,6 +1,5 @@
 <?php
 
-
 class Player
 {
     public Blackjack $game;
@@ -17,7 +16,7 @@ class Player
     public function bet($amount): string
     {
         if($amount < 5) {
-            return "минимальная ставка 5";
+            return 'минимальная ставка 5';
         }
         $this->game->addBet($this, $amount);
     }
