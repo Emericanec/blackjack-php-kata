@@ -3,18 +3,18 @@
 
 class Player
 {
-    public $game;
+    public Blackjack $game;
 
     public function __construct()
     {
     }
 
-    public function join(Blackjack $game)
+    public function join(Blackjack $game): void
     {
         $this->game = $game;
     }
 
-    public function bet($amount)
+    public function bet($amount): string
     {
         if($amount < 5) {
             return "минимальная ставка 5";

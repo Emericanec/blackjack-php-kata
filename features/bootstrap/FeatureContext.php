@@ -9,7 +9,7 @@ use function PHPUnit\Framework\assertEquals;
  */
 class FeatureContext implements Context
 {
-    private $player;
+    private Player $player;
     private $error;
     private $game;
 
