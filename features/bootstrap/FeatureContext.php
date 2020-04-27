@@ -3,6 +3,7 @@
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertTrue;
 
 /**
  * Defines application features from the specific context.
@@ -11,11 +12,12 @@ class FeatureContext implements Context
 {
     private Player $player;
     private $error;
-    private $game;
+    private Blackjack $game;
 
     public function __construct()
     {
         $this->player = new Player();
+        $this->game = new Blackjack(new Dealer());
     }
 
     /**
@@ -23,7 +25,7 @@ class FeatureContext implements Context
      */
     public function игорьХочетИспытатьУдачуВBlackjack()
     {
-        $this->player->join(new Blackjack());
+        $this->player->join($this->game);
     }
 
     /**
@@ -51,7 +53,33 @@ class FeatureContext implements Context
      */
     public function дилерСдаётЕмуКарты($cardsCount)
     {
-        $cards = $this->player->game->dealerDealsCards();
+        $cards = $this->game->dealerDealsCards();
         assertEquals($cardsCount, count($cards));
     }
+
+    /**
+     * @When /^дилер начинает набирать себе (.*)/
+     */
+    public function дилерНачинаетНабиратьСебе($карты)
+    {
+        $this->game->getDealer()->initCards($карты);
+    }
+
+    /**
+     * @When /^дилер закончил брать карты$/
+     */
+    public function дилерЗакончилБратьКарты()
+    {
+        assertTrue(count($this->game->getDealer()->getCards()) >= 2);
+    }
+
+    /**
+     * @When /^дилер совершает (.*)$/
+     */
+    public function дилерСовершает($действие)
+    {
+        assertEquals($this->game->getDealer()->getNextAction(), $действие);
+    }
+
+
 }

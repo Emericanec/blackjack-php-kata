@@ -13,7 +13,7 @@ class Player
         $this->game = $game;
     }
 
-    public function bet($amount): string
+    public function bet($amount)
     {
         if($amount < 5) {
             return 'минимальная ставка 5';

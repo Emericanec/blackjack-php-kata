@@ -19,4 +19,9 @@ class Deck
     {
         return array_pop($this->cards);
     }
+
+    public function getValue(array $card)
+    {
+        return 0;
+    }
 }
